@@ -28,7 +28,7 @@
     session_start();
     $email = $_POST['email'];
     $password=$_POST['password'];
-    if($email === 'admin123@gmail.com' and $password === 'admin123'){
+    if($email === 'admin@admin.com' and $password === 'secret'){
         header('location: home.php');
     }
     else
