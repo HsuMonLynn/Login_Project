@@ -12,9 +12,15 @@
     <div class="wrap col-md-6 offset-md-3">
         <h1 class="h3 mb-3">Login</h1>
         <form action="" method="post">
-            <input type="email" class="form-control mb-2" name="email" placeholder="Email" required> <br>
-            <input type="password" class="form-control mb-2" name="password" placeholder="Password" required> <br>
-            <button type="submit" class="btn btn-primary w-100 btn-lg">Login</button>
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="float-left">Email address</label> 
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="float-left">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
+            </div>
+                <button type="submit" class="btn btn-primary w-100 btn-lg mt-4">Login</button>
         </form>
     </div>
 </div>
