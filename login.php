@@ -20,18 +20,38 @@
                 <label for="exampleInputPassword1" class="float-left">Password</label>
                 <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
             </div>
-                <button type="submit" class="btn btn-primary w-100 btn-lg mt-4">Login</button>
+                <input type="submit" class="btn btn-primary w-100 btn-lg mt-4 mb-4" name="login" value="Login">
+                <div class="text-center">Don't have an account? <a href="register.php">Register Here</a></div>
         </form>
     </div>
 </div>
 <?php
-    session_start();
-    $email = $_POST['email'];
-    $password=$_POST['password'];
-    if($email === 'admin@admin.com' and $password === 'secret'){
-        header('location: home.php');
-    }
-    else
+        session_start();
+        include('db.php');
+        if($_POST['login']) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $query = "SELECT * FROM `members` WHERE email='$email' LIMIT 1";
+            $result = mysqli_query($db,$query);
+            
+            if(mysqli_num_rows($result) == 1) {
+                foreach($result as $data) {
+                    $db_username = $data['name'];
+                    $db_email = $data['email'];
+                    $db_password = $data['password'];
+                }
+                if($password == $db_password) {
+                    $_SESSION['name'] = $db_username;
+                    $_SESSION['email'] = $db_email;
+                    $_SESSION['password'] = $db_password;
+                    header('location:home.php');
+                }else {
+                    echo "Password incorrect!";
+                }
+            }else {
+                echo "Please Register!";
+            }
+        }
     ?>
 
 </body>
