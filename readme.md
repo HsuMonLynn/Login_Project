@@ -1,4 +1,4 @@
-# Login
+# Register
 
 - [Register](#register)
 - [Login](#login)
